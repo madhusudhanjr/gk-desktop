@@ -1,8 +1,6 @@
 package com.gk.pageobjects;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
@@ -20,21 +18,6 @@ public abstract class BasePage {
 	protected final WebDriver m_driver;
 
 	/**
-	 * Commonly used WebElements
-	 */
-	@FindBy(css = ".masthead h1")
-	WebElement heading;
-	
-	@FindBy(css = "input[value='Calculate']")
-	WebElement calculateBtn;
-	
-	@FindBy(css = ".reset")
-	WebElement resetBtn;
-
-	@FindBy(xpath = "//span[(text()= 'Reset')]")
-	WebElement resetFormBtn;
-
-	/**
 	 * A base constructor that sets the page's driver
 	 *
 	 * The page structure is being used within this test in order to separate
@@ -49,22 +32,6 @@ public abstract class BasePage {
 		AjaxElementLocatorFactory ajaxElementLocatorFactory = new AjaxElementLocatorFactory(driver, 15);
 		PageFactory.initElements(ajaxElementLocatorFactory, this);
 
-	}
-	
-	/**
-	 * This method is used to get header info
-	 */
-	public String getHeaderText() {
-
-		return heading.getText();
-	}
-	
-	/**
-	 * This method is used to click Calculate Button
-	 */
-	public void clickCalculateBtn() {
-
-		calculateBtn.click();
 	}
 
 }

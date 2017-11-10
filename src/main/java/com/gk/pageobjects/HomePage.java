@@ -19,7 +19,6 @@ public class HomePage extends BasePage {
 	/**
 	 * Class variable which holds the reference to the Logger Object
 	 */
-	// static Logger logger = Logger.getLogger(HomePage.class);
 
 	// Header Banner Row Buttons
 	@FindBy(xpath = "//div[contains(@class, 'keep-header')]//a[contains(.,'Try Google Keep')]")
@@ -56,6 +55,7 @@ public class HomePage extends BasePage {
 	@FindBy(css = ".social-link--twitter a")
 	WebElement twitterIcon;
 
+	// Header Social Icons
 	@FindBy(id = "identifierId")
 	WebElement userName;
 
@@ -71,15 +71,6 @@ public class HomePage extends BasePage {
 	@FindBy(css = ".keep-item-container")
 	List<WebElement> containerItems;
 
-	@FindBy(css = "#maia-footer-global a")
-	List<WebElement> footerLinks;
-
-	@FindBy(id = "ognwrapper")
-	WebElement wrapperHeader;
-
-	@FindBy(xpath = "//*[text()='No thanks']")
-	WebElement appAlert;
-
 	public HomePage(WebDriver driver) {
 
 		super(driver);
@@ -92,7 +83,6 @@ public class HomePage extends BasePage {
 	 */
 	public void enterUsername(String username) {
 
-		// logger.info("Enter UserName :: " + username);
 		userName.sendKeys(username);
 	}
 
@@ -103,7 +93,7 @@ public class HomePage extends BasePage {
 	 */
 	public void enterPassword(String pwd) {
 
-		// logger.info("Enter Password :: " + pwd);
+		CommonHelper.explicitWaitTillVisible(m_driver, 10, password);
 		password.sendKeys(pwd);
 	}
 
@@ -112,7 +102,6 @@ public class HomePage extends BasePage {
 	 */
 	public void clickTryGoogleKeepBtn() {
 
-		// logger.info("Click TryGoogleKeep Button");
 		tryGoogleKeepBtn.click();
 	}
 
@@ -121,7 +110,6 @@ public class HomePage extends BasePage {
 	 */
 	public void clickAndroidBtn() {
 
-		// logger.info("Click TryGoogleKeep Button");
 		androidBtn.click();
 	}
 
@@ -130,7 +118,6 @@ public class HomePage extends BasePage {
 	 */
 	public void clickIOSBtn() {
 
-		// logger.info("Click TryGoogleKeep Button");
 		iOSBtn.click();
 	}
 
@@ -139,7 +126,6 @@ public class HomePage extends BasePage {
 	 */
 	public void clickChromeBtn() {
 
-		// logger.info("Click TryGoogleKeep Button");
 		chromeBtn.click();
 	}
 
@@ -148,7 +134,6 @@ public class HomePage extends BasePage {
 	 */
 	public void clickWebVersionBtn() {
 
-		// logger.info("Click TryGoogleKeep Button");
 		webVersionBtn.click();
 	}
 
@@ -158,7 +143,6 @@ public class HomePage extends BasePage {
 	 */
 	public void clickUsernameNextBtn() {
 
-		// logger.info("Click Username -> Next Button");
 		userNameNextBtn.click();
 	}
 
@@ -168,8 +152,71 @@ public class HomePage extends BasePage {
 	 */
 	public void clickPasswordNextBtn() {
 
-		// logger.info("Click Password -> Next Button");
+		CommonHelper.explicitWaitTillVisible(m_driver, 10, passwordNextBtn);
 		passwordNextBtn.click();
+	}
+
+	/**
+	 * This method is used to get the container items list
+	 * 
+	 * @return List<WebElement>
+	 */
+	public List<WebElement> getContainerItemsList() {
+
+		return containerItems;
+	}
+
+	/**
+	 * This method is used to get the footer links list
+	 * 
+	 * @return List<WebElement>
+	 */
+	public List<WebElement> getSocialIcons() {
+
+		return socialIcons;
+	}
+
+	/**
+	 * This method is used to click the GPlus icon
+	 */
+	public void clickGooglePlusIcon() {
+
+		gPlusSocialIcon.click();
+
+	}
+
+	/**
+	 * This method is used to click the facebook icon
+	 */
+	public void clickFacebookIcon() {
+
+		facebookIcon.click();
+
+	}
+
+	/**
+	 * This method is used to click the Twitter icon
+	 */
+	public void clickTwitterIcon() {
+
+		twitterIcon.click();
+
+	}
+
+	/**
+	 * This method is used to mouseHover on GPlus icon
+	 */
+	public void moseHoverToGooglePlus() {
+
+		CommonHelper.mouseHover(m_driver, gPlusIcon);
+	}
+
+	/**
+	 * This method is used to switch to Gplus iframe
+	 */
+	public void switchToGPlusFrame() {
+
+		CommonHelper.switchToFrame(m_driver, gPlusIFrame);
 	}
 
 	/**
@@ -177,92 +224,7 @@ public class HomePage extends BasePage {
 	 */
 	public void verifyTryGoogleKeepBtn() {
 
-		// logger.info("Verify Try Google Keep Button");
-
 		Assert.assertTrue("Try Google Keep Button not displayed!!", tryGoogleKeepBtn.isDisplayed());
 		Assert.assertTrue("Try Google Keep Button not enabled!!", tryGoogleKeepBtn.isEnabled());
-
-		// logger.info("Google Keep Button verified successfully!!");
-
-	}
-
-	/**
-	 * This method is used to get the container items list
-	 * 
-	 * @return List<MobileElement>
-	 */
-	public List<WebElement> getContainerItemsList() {
-
-		// logger.info("Get Container Items List");
-
-		return containerItems;
-	}
-
-	/**
-	 * This method is used to verify the presence of "Try Google Keep Button"
-	 */
-	public void verifyGoogleSigninForm() {
-
-		// logger.info("Verify Google Sign-in Form");
-
-		Assert.assertTrue("Google Sign-in Form displayed!!", userName.isDisplayed());
-		Assert.assertTrue("Google Sign-in Form enabled!!", userName.isEnabled());
-
-		// logger.info("Google Sign-in Form verified successfully!!");
-
-	}
-
-	/**
-	 * This method is used to get the footer links list
-	 * 
-	 * @return List<MobileElement>
-	 */
-	public List<WebElement> getFooterLinks() {
-
-		// logger.info("Get Footer Links");
-
-		return footerLinks;
-	}
-
-	/**
-	 * This method is used to get the Header Text
-	 * 
-	 * @return String
-	 */
-	public String getHeaderText() {
-
-		// logger.info("Get Header Text");
-
-		return wrapperHeader.getText();
-	}
-
-	/**
-	 * This method is used to click on the Alert
-	 */
-	public void handleAppAlert() {
-
-		// logger.info("Handle App Alert");
-
-		appAlert.click();
-	}
-
-	/**
-	 * This method is used to get the footer links list
-	 * 
-	 * @return List<MobileElement>
-	 */
-	public List<WebElement> getSocialIcons() {
-
-		// logger.info("Get Footer Links");
-
-		return socialIcons;
-	}
-
-	public void clickGooglePlusIcon() {
-
-		CommonHelper.mouseHover(m_driver, gPlusIcon);
-		CommonHelper.switchToFrame(m_driver, gPlusIFrame);
-		gPlusSocialIcon.click();
-
 	}
 }

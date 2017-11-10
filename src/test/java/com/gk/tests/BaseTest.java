@@ -1,5 +1,6 @@
 package com.gk.tests;
 
+import java.io.File;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Reporter;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -17,6 +19,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
 import com.gk.pageobjects.HomePage;
+import com.gk.utils.CommonHelper;
 
 /**
  * BaseTest Class holds common methods to execute before and after executing the
@@ -27,14 +30,10 @@ import com.gk.pageobjects.HomePage;
 public class BaseTest {
 
 	/**
-	 * Class variable which holds the reference to the Logger Object
-	 */
-	//static Logger logger = Logger.getLogger(BaseTest.class);
-
-	/**
 	 * Class variable which holds the reference to the WebDriver Object
 	 */
 	public static String m_browser;
+	public static String m_dirPath;
 
 	enum Drivers {
 
@@ -78,7 +77,7 @@ public class BaseTest {
 	public HomePage launchURL(String url) {
 
 		getDriverForThread().get(url);
-
+		Reporter.log("Launched URL: " + url);
 		return new HomePage(getDriverForThread());
 	}
 
@@ -88,12 +87,12 @@ public class BaseTest {
 	 * 
 	 * @param browser
 	 */
-	@Parameters({ "browser" })
+	@Parameters({ "browser", "dirPath" })
 	@BeforeSuite(alwaysRun = true)
-	public void initialize(String browser) {
+	public void initialize(String browser, String dirPath) {
 
-		//PropertyConfigurator.configure("src/test/resources/Logger/log4j.properties");
 		m_browser = browser;
+		m_dirPath = dirPath;
 
 	}
 
@@ -110,7 +109,7 @@ public class BaseTest {
 		switch (Drivers.valueOf(m_browser)) {
 		case CHROME:
 
-			System.setProperty("webdriver.chrome.driver", "src/test/resources/Drivers/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", getChromeDriverExePath());
 			capabilites = DesiredCapabilities.chrome();
 			driver = new ChromeDriver(capabilites);
 			break;
@@ -120,6 +119,45 @@ public class BaseTest {
 		}
 
 		return driver;
+	}
+
+	private static String getChromeDriverExePath() {
+
+		String path = "";
+		String os = CommonHelper.OSDetector();
+
+		boolean dirExists = false;
+
+		File f = new File(m_dirPath);
+		if (f.exists() && f.isDirectory()) {
+			dirExists = true;
+		}
+
+		if (os.equalsIgnoreCase("Windows")) {
+
+			if (dirExists)
+				return path = f.getAbsolutePath() + "/chromedriver.exe";
+
+			path = "src/test/resources/Drivers/chromedriver.exe";
+		}
+
+		else if (os.equalsIgnoreCase("Mac")) {
+
+			if (dirExists)
+				return path = f.getAbsolutePath() + "/chromedrivermac";
+
+			path = "src/test/resources/Drivers/chromedrivermac";
+
+		} else if (os.equalsIgnoreCase("Mac")) {
+
+			if (dirExists)
+				return path = f.getAbsolutePath() + "/chromedriverlinux";
+
+			path = "src/test/resources/Drivers/chromedriverlinux";
+
+		}
+		
+		return path;
 	}
 
 	/**
@@ -148,7 +186,7 @@ public class BaseTest {
 	/**
 	 * This method executes after every test method
 	 * 
-	 * @param method
+	 * @param methods
 	 */
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(Method method) {
@@ -157,8 +195,8 @@ public class BaseTest {
 	}
 
 	/**
-	 * This method executes After Suite and quits driver after executing all Test
-	 * Methods which are part of Test Suite
+	 * This method executes After Suite and quits driver after executing all
+	 * Test Methods which are part of Test Suite
 	 */
 	@AfterSuite(alwaysRun = true)
 	public void shutDown() {

@@ -14,14 +14,16 @@ public class GoogleKeepTestRunner {
 
 	public static void main(String[] args) {
 
-		// CommandLineOptions options = new CommandLineOptions();
-		// JCommander jCommander = new JCommander(options, args);
+		String dirPath = "";
+		if (args.length != 0)
+			dirPath = args[0];
 
 		XmlSuite suite = new XmlSuite();
 		suite.setName("MyTestSuite");
 		Map<String, String> parameters = new HashMap<String, String>();
 		parameters.put("url", "https://www.google.com/keep");
 		parameters.put("browser", "CHROME");
+		parameters.put("dirPath", dirPath);
 		suite.setParameters(parameters);
 
 		List<XmlClass> classes = new ArrayList<XmlClass>();
