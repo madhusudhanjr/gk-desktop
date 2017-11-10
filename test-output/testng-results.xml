@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="MyTestSuite" duration-ms="29089" started-at="2017-11-10T15:21:51Z" finished-at="2017-11-10T15:22:20Z">
+    <groups>
+    </groups>
+    <test name="MyTests" duration-ms="29089" started-at="2017-11-10T15:21:51Z" finished-at="2017-11-10T15:22:20Z">
+      <class name="com.gk.tests.GoogleKeepTest">
+        <test-method status="PASS" signature="initialize(java.lang.String)[pri:0, instance:com.gk.tests.GoogleKeepTest@2a3046da]" name="initialize" is-config="true" duration-ms="16" started-at="2017-11-10T16:21:51Z" finished-at="2017-11-10T16:21:51Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[CHROME]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialize -->
+        <test-method status="PASS" signature="setup(java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:com.gk.tests.GoogleKeepTest@2a3046da]" name="setup" is-config="true" duration-ms="4224" started-at="2017-11-10T16:21:51Z" finished-at="2017-11-10T16:21:55Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[CHROME]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://www.google.com/keep]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[public void com.gk.tests.GoogleKeepTest.verifyGKHeaderTryGoogleKeepBtnComponent(java.lang.String) throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="verifyGKHeaderTryGoogleKeepBtnComponent(java.lang.String)[pri:0, instance:com.gk.tests.GoogleKeepTest@2a3046da]" name="verifyGKHeaderTryGoogleKeepBtnComponent" duration-ms="9135" started-at="2017-11-10T16:21:55Z" finished-at="2017-11-10T16:22:04Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[https://www.google.com/keep]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyGKHeaderTryGoogleKeepBtnComponent -->
+        <test-method status="PASS" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:com.gk.tests.GoogleKeepTest@2a3046da]" name="tearDown" is-config="true" duration-ms="0" started-at="2017-11-10T16:22:04Z" finished-at="2017-11-10T16:22:04Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gk.tests.GoogleKeepTest.verifyGKHeaderTryGoogleKeepBtnComponent(java.lang.String) throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:com.gk.tests.GoogleKeepTest@2a3046da]" name="setup" is-config="true" duration-ms="12" started-at="2017-11-10T16:22:04Z" finished-at="2017-11-10T16:22:04Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[CHROME]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://www.google.com/keep]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[public void com.gk.tests.GoogleKeepTest.verifyGKContainerItems(java.lang.String) throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="verifyGKContainerItems(java.lang.String)[pri:1, instance:com.gk.tests.GoogleKeepTest@2a3046da]" name="verifyGKContainerItems" duration-ms="15700" started-at="2017-11-10T16:22:04Z" finished-at="2017-11-10T16:22:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[https://www.google.com/keep]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyGKContainerItems -->
+        <test-method status="PASS" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:com.gk.tests.GoogleKeepTest@2a3046da]" name="tearDown" is-config="true" duration-ms="1" started-at="2017-11-10T16:22:20Z" finished-at="2017-11-10T16:22:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.gk.tests.GoogleKeepTest.verifyGKContainerItems(java.lang.String) throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="shutDown()[pri:0, instance:com.gk.tests.GoogleKeepTest@2a3046da]" name="shutDown" is-config="true" duration-ms="1096" started-at="2017-11-10T16:22:20Z" finished-at="2017-11-10T16:22:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shutDown -->
+      </class> <!-- com.gk.tests.GoogleKeepTest -->
+    </test> <!-- MyTests -->
+  </suite> <!-- MyTestSuite -->
+</testng-results>
