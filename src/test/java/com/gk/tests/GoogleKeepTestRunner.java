@@ -1,5 +1,6 @@
 package com.gk.tests;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +39,13 @@ public class GoogleKeepTestRunner {
 
 		TestNG testNG = new TestNG();
 		testNG.setXmlSuites(suites);
+		
+		String path = dirPath + "/../TestOutput";
+		
+		File f = new File(path);
+		f.mkdir();
+		
+		testNG.setOutputDirectory(f.getAbsolutePath());
 		testNG.run();
 	}
 }
